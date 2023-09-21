@@ -19,7 +19,7 @@
 
         <div class="card">
 
-            {!! Form::model($qrcode, ['route' => ['qrcodes.update', $qrcode->id], 'method' => 'patch','enctype' => 'multipart/form-data]) !!}
+            {!! Form::model($qrcode, ['route' => ['qrcodes.update', $qrcode->id], 'method' => 'patch','enctype' => 'multipart/form-data']) !!}
 
             <div class="card-body">
                 <div class="row">
