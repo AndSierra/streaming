@@ -128,7 +128,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     }
     public function setPasswordAttribute($value)
     {
-        $this->attributes['password'] = Hash::make($value);
+        if(Hash::needsRehash($value))
+
+        $password = Hash::make($value);
+
+
+
+    $this->attributes['password'] = $value;
     }
 
     /**
