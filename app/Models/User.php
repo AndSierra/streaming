@@ -144,4 +144,21 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     {
         return $this->hasMany(Transaction::class);
     }
+    /**
+     * Get the roles for roles.
+     */
+    public function roles(): HasMany
+    {
+        return $this->hasMany(Roles::class);
+    }
+
+    public function role_name()
+    {
+        return $this->hasMany(Roles::class, 'id', 'roles_id')->select('name');
+    }
+
+    public function qrcodes(): HasMany
+    {
+        return $this->hasMany(Qrcode::class);
+    }
 }

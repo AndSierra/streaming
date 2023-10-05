@@ -1,5 +1,12 @@
 <!-- Name Field -->
 <div class="col-sm-12">
+    {!! Form::label('rol', 'rol:') !!}
+    <p>{{ $user->role_name[0]['name'] }}</p>
+
+</div>
+
+<!-- Name Field -->
+<div class="col-sm-12">
     {!! Form::label('name', 'Name:') !!}
     <p>{{ $user->name }}</p>
 </div>
@@ -10,42 +17,82 @@
     <p>{{ $user->email }}</p>
 </div>
 
-<!-- Email Verified At Field -->
-<div class="col-sm-12">
-    {!! Form::label('email_verified_at', 'Email Verified At:') !!}
-    <p>{{ $user->email_verified_at }}</p>
-</div>
 
-<!-- Password Field -->
-<div class="col-sm-12">
-    {!! Form::label('password', 'Password:') !!}
-    <p>{{ $user->password }}</p>
-</div>
-
-<!-- Remember Token Field -->
-<div class="col-sm-12">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    <p>{{ $user->remember_token }}</p>
-</div>
-
-<h1>Transacciones</h1>
+<h1>TRANSACCIONES DE ESTE USUARIO</h1>
 
 <div class="col-sm-12">
-    <table>
-        <thead>
+    <table class="table">
+        <thead class="table-dark">
             <tr>
-                <th>Transactions Id</th>
-                <th>Amount</th>
+                <th scope="col">Transactions Id</th>
+                <th scope="col">Producto</th>
+                <th scope="col">Amount</th>
+                <th scope="col">payment_method</th>
+                <th scope="col">status</th>
             </tr>
         </thead>
         <tbody>
+            @php
+                $totalAmount = 0;  // Inicializamos la variable para almacenar el total
+            @endphp
             @foreach ($user->transactions as $transaction)
                 <tr>
                     <td>{{ $transaction->id }}</td>
-                    <td>${{ $transaction->amount }}</td>
+                    <td>{{ $transaction->qrcode_id }}</td>
+                    <td>{{ $transaction->amount }}</td>
+                    <td>{{ $transaction->payment_method }}</td>
+                    <td>{{ $transaction->status }}</td>
                 </tr>
+                @php
+                    $totalAmount += $transaction->amount;  // Sumamos el monto de la transacción al total
+                @endphp
             @endforeach
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td>Total: ${{ $totalAmount }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
     </table>
 </div>
 
+
+<h1>PRODUCTOS DE ESTE USUARIO</h1>
+
+<div class="col-sm-12">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col ">Producto Id</th>
+                <th scope="col">Producto</th>
+                <th scope="col">amout</th>
+            </tr>
+        </thead>
+        <tbody>
+            @php
+            $totalAmount = 0;  // Inicializamos la variable para almacenar el total
+            @endphp
+            @foreach ($user->qrcodes as $qrcode)
+                <tr>
+                    <td>{{ $qrcode->id }}</td>
+                    <td>{{ $qrcode->product_name }}</td>
+                    <td>{{ $qrcode->amount }}</td>
+                </tr>
+                @php
+                $totalAmount += $qrcode->amount;  // Sumamos el monto de la transacción al total
+            @endphp
+            @endforeach
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td>Total: ${{ $totalAmount }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
