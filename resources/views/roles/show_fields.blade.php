@@ -20,7 +20,7 @@
                     
                 </div>
 <div class="col-sm-12">
-    <table class="table-responsive-lg">
+    <table class="table">
         <thead class="table-dark">
             <tr>
                 <th scope="col ">ID</th>

@@ -1,8 +1,7 @@
 <!-- Name Field -->
-<div class="col-sm-12">
-    {!! Form::label('rol', 'rol:') !!}
-    <p>{{ $user->role_name[0]['name'] }}</p>
-
+<div class="col-sm-12" style="margin-bottom: 1%;">
+    <h6><strong>Rol de este usuario:</strong></h6>
+    <button type="button" class="btn btn-outline-primary">{{ $user->role_name[0]['name'] }}</button>
 </div>
 
 <!-- Name Field -->
@@ -38,7 +37,10 @@
             @foreach ($user->transactions as $transaction)
                 <tr>
                     <td>{{ $transaction->id }}</td>
-                    <td>{{ $transaction->qrcode_id }}</td>
+                    <td>{{ $transaction->qrcode ? $transaction->qrcode->product_name : 'N/A' }}
+                 
+                    <img src="../{{ $transaction->qrcode ? $transaction->qrcode->product_url_image_path : 'N/A' }}" width="100px" />
+                </td>
                     <td>{{ $transaction->amount }}</td>
                     <td>{{ $transaction->payment_method }}</td>
                     <td>{{ $transaction->status }}</td>
@@ -78,7 +80,10 @@
             @foreach ($user->qrcodes as $qrcode)
                 <tr>
                     <td>{{ $qrcode->id }}</td>
-                    <td>{{ $qrcode->product_name }}</td>
+                    <td>
+                        {{ $qrcode->product_name }}
+                        <img src="../{{$qrcode->product_url_image_path}}" width="100px" />
+                    </td>
                     <td>{{ $qrcode->amount }}</td>
                 </tr>
                 @php

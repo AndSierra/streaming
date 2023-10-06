@@ -2,7 +2,7 @@
 <div class="col-sm-12">
     {!! Form::label('user_id', 'User Id:') !!}
 
-    <p>{{ $transaction->user['name'] }} || {{$transaction->user['email']}}</p>
+    <p>{{ $transaction->users['name'] }} || {{$transaction->user['email']}}</p>
 </div>
 
 <!-- Qrcode Owner Id Field -->
@@ -40,3 +40,5 @@
     {!! Form::label('status', 'Status:') !!}
     <p>{{ $transaction->status }}</p>
 </div>
+
+

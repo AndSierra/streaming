@@ -3,27 +3,29 @@
         <table class="table" id="qrcodes-table">
             <thead>
             <tr>
-                <th>User Id</th>
+                <th>Propietario del Producto</th>
                 <th>Website</th>
                 <th>Company Name</th>
                 <th>Product Name</th>
                 <th>Product Url</th>
                 <th>Callback Url</th>
+                <th>Product url image path</th>
                 <th>Qrcode Path</th>
                 <th>Amount</th>
-                <th>Product Url Image Path</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($qrcodes as $qrcode)
                 <tr>
-                    <td>{{ $qrcode->user_id }}</td>
+                    <td> <button type="button" class="btn btn-outline-primary">{{$qrcode->user['name']}}</button></td>
+                    <td> <button type="button" class="btn btn-outline-primary">{{$qrcode->website}}</button></td>
                     <td>{{ $qrcode->website }}</td>
                     <td>{{ $qrcode->company_name }}</td>
                     <td>{{ $qrcode->product_name }}</td>
                     <td>{{ $qrcode->product_url }}</td>
-                    <td>{{ $qrcode->callback_url }}</td>
+                    <td> <button type="button" class="btn btn-outline-primary">{{$qrcode->callback_url}}</button></td>
+                    <td><img width="100%" height="100%" src = "{{ $qrcode->product_url_image_path }}"></td>
                     <td><img width="100%" height="100%" src = "{{ $qrcode->qrcode_path }}"></td>
                     <td>{{ $qrcode->amount }}</td>
                     <td><img width="100%" height="100%" src = "{{ $qrcode->product_url_image_path }}"> </td>
