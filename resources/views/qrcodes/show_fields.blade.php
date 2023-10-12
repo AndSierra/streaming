@@ -1,13 +1,13 @@
 <!-- User Id Field -->
 <div class="col-sm-12" style="margin-bottom: 1%;">
    <H6><strong>PROPIETARIO DEL PRODUCTO</strong></H6>
-    <td> <button type="button" class="btn btn-outline-primary">{{ $qrcode->user['name']}}</button></td>
+    <td> <a href="/users/{{ $qrcode->user['id']}}"><button type="button" class="btn btn-outline-primary">{{ $qrcode->user['name']}}</button></a></td>
 </div>
 
 <!-- Website Field -->
 <div class="col-sm-12">
     {!! Form::label('website', 'Website:') !!}
-    <p>{{ $qrcode->website }}</p>
+    <p><a href="{{ $qrcode->website }}">{{ $qrcode->website }}</a></p>
 </div>
 
 <!-- Company Name Field -->
@@ -25,7 +25,7 @@
 <!-- Product Url Field -->
 <div class="col-sm-12">
     {!! Form::label('product_url', 'Product Url:') !!}
-    <p>{{ $qrcode->product_url }}</p>
+    <p><a href="{{ $qrcode->product_url }}">{{ $qrcode->product_url }}</a></p>
 </div>
 
 <div class="col-sm-12">
@@ -35,7 +35,7 @@
 <!-- Callback Url Field -->
 <div class="col-sm-12">
     {!! Form::label('callback_url', 'Callback Url:') !!}
-    <p>{{ $qrcode->callback_url }}</p>
+    <p><a href="{{ $qrcode->callback_url }}">{{ $qrcode->callback_url }}</a></p>
 </div>
 
 <!-- Qrcode Path Field -->
@@ -49,7 +49,7 @@
     {!! Form::label('amount', 'Amount:') !!}
     <p>{{ $qrcode->amount }}</p>
 </div>
-
+<form action="{{route('payment')}}" method="post"> @csrf <!-- protección contra ataques de falsificación de solicitudes entre sitios (CSRF).--> <input type="hidden" name="amount" value="{{ $qrcode->amount }}"> <button type="submit">Paypal</button> </form>
 <h1>TRANSACCIONES DE ESTE PRODUCTO</h1>
 
 <div class="col-sm-12">
@@ -69,11 +69,11 @@
             @endphp
             @foreach ($qrcode->transactions as $transaction)
                 <tr>
-                    <td>{{ $transaction->id }}</td>
+                    <td><a href="/transactions/{{ $transaction->id }}">{{ $transaction->id }}</a></td>
                     <td>{{ $transaction->amount }}</td>
                     <td>{{ $transaction->payment_method }}</td>
                     <td>{{ $transaction->status }}</td>
-                    <td></td>
+                    <td><a href="/users/{{$transaction->user['id']}}">{{ $transaction->user['name']}}</a></td>
                 </tr>
                 @php
                     $totalAmount += $transaction->amount;  // Sumamos el monto de la transacción al total

@@ -1,7 +1,13 @@
+<!-- Rol Field -->
+<div class="col-sm-12">
+    {!! Form::label('rol', 'Rol:') !!}
+    <p><button type="button" class="btn btn-outline-primary">{{ $user->role_name[0]['name'] }}</button></p>
+</div>
+
 <!-- Name Field -->
 <div class="col-sm-12" style="margin-bottom: 1%;">
     <h6><strong>Rol de este usuario:</strong></h6>
-    <button type="button" class="btn btn-outline-primary">{{ $user->role_name[0]['name'] }}</button>
+    <a href="/roles/{{$user->roles_id}}"><button type="button" class="btn btn-outline-primary">{{ $user->role_name[0]['name'] }}</button></a>
 </div>
 
 <!-- Name Field -->
@@ -37,7 +43,7 @@
             @foreach ($user->transactions as $transaction)
                 <tr>
                     <td>{{ $transaction->id }}</td>
-                    <td>{{ $transaction->qrcode ? $transaction->qrcode->product_name : 'N/A' }}
+                    <td><a href="/qrcodes/{{$transaction->qrcode_id}}">{{ $transaction->qrcode ? $transaction->qrcode->product_name : 'N/A' }}</a>
                  
                     <img src="../{{ $transaction->qrcode ? $transaction->qrcode->product_url_image_path : 'N/A' }}" width="100px" />
                 </td>
@@ -81,7 +87,7 @@
                 <tr>
                     <td>{{ $qrcode->id }}</td>
                     <td>
-                        {{ $qrcode->product_name }}
+                    <a href="/qrcodes/{{$qrcode->id}}">{{ $qrcode->product_name }}</a>
                         <img src="../{{$qrcode->product_url_image_path}}" width="100px" />
                     </td>
                     <td>{{ $qrcode->amount }}</td>

@@ -11,8 +11,7 @@
             @foreach($roles as $rol)
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-outline-primary">{{ $rol->name }}</button>
-
+                        <a href="{{ route('roles.show', [$rol->id]) }}"><button type="button" class="btn btn-outline-primary">{{ $rol->name }}</button></a>
                     </td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['roles.destroy', $rol->id], 'method' => 'delete']) !!}
