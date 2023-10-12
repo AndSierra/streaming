@@ -1,7 +1,8 @@
 <!-- User Id Field -->
 <div class="col-sm-12" style="margin-bottom: 1%;">
-   <H6><strong>PROPIETARIO DEL PRODUCTO</strong></H6>
-    <td> <a href="/users/{{ $qrcode->user['id']}}"><button type="button" class="btn btn-outline-primary">{{ $qrcode->user['name']}}</button></a></td>
+    <H6><strong>PROPIETARIO DEL PRODUCTO</strong></H6>
+    <td> <a href="/users/{{ $qrcode->user['id'] }}"><button type="button"
+                class="btn btn-outline-primary">{{ $qrcode->user['name'] }}</button></a></td>
 </div>
 
 <!-- Website Field -->
@@ -30,7 +31,7 @@
 
 <div class="col-sm-12">
     <h6><strong>Product_url_image_path:</strong></h6>
-    <img src="../{{$qrcode->product_url_image_path}}" width="100px" />
+    <img src="../{{ $qrcode->product_url_image_path }}" width="100px" />
 </div>
 <!-- Callback Url Field -->
 <div class="col-sm-12">
@@ -40,8 +41,8 @@
 
 <!-- Qrcode Path Field -->
 <div class="col-sm-12">
-    {!! Form::label('qrcode_path', 'Qrcode Path:') !!}  
-    <p> <img src="{{asset($qrcode->qrcode_path)}}" ></p>
+    {!! Form::label('qrcode_path', 'Qrcode Path:') !!}
+    <p> <img src="{{ asset($qrcode->qrcode_path) }}"></p>
 </div>
 
 <!-- Amount Field -->
@@ -49,7 +50,13 @@
     {!! Form::label('amount', 'Amount:') !!}
     <p>{{ $qrcode->amount }}</p>
 </div>
-<form action="{{route('payment')}}" method="post"> @csrf <!-- protección contra ataques de falsificación de solicitudes entre sitios (CSRF).--> <input type="hidden" name="amount" value="{{ $qrcode->amount }}"> <button type="submit">Paypal</button> </form>
+
+<div class="col-sm-12">
+    <form action="{{ route('payment') }}" method="post"> @csrf
+        <!-- protección contra ataques de falsificación de solicitudes entre sitios (CSRF).--> <input type="hidden"
+            name="amount" value="{{ $qrcode->amount }}"> <button type="submit">Paypal</button> </form>
+</div>
+
 <h1>TRANSACCIONES DE ESTE PRODUCTO</h1>
 
 <div class="col-sm-12">
@@ -65,7 +72,7 @@
         </thead>
         <tbody>
             @php
-                $totalAmount = 0;  // Inicializamos la variable para almacenar el total
+                $totalAmount = 0; // Inicializamos la variable para almacenar el total
             @endphp
             @foreach ($qrcode->transactions as $transaction)
                 <tr>
@@ -73,10 +80,10 @@
                     <td>{{ $transaction->amount }}</td>
                     <td>{{ $transaction->payment_method }}</td>
                     <td>{{ $transaction->status }}</td>
-                    <td><a href="/users/{{$transaction->user['id']}}">{{ $transaction->user['name']}}</a></td>
+                    <td><a href="/users/{{ $transaction->user['id'] }}">{{ $transaction->user['name'] }}</a></td>
                 </tr>
                 @php
-                    $totalAmount += $transaction->amount;  // Sumamos el monto de la transacción al total
+                    $totalAmount += $transaction->amount; // Sumamos el monto de la transacción al total
                 @endphp
             @endforeach
         </tbody>
@@ -90,5 +97,3 @@
         </tfoot>
     </table>
 </div>
-
-
