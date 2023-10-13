@@ -5,12 +5,6 @@
 </div>
 
 <!-- Name Field -->
-<div class="col-sm-12" style="margin-bottom: 1%;">
-    <h6><strong>Rol de este usuario:</strong></h6>
-    <a href="/roles/{{$user->roles_id}}"><button type="button" class="btn btn-outline-primary">{{ $user->role_name[0]['name'] }}</button></a>
-</div>
-
-<!-- Name Field -->
 <div class="col-sm-12">
     {!! Form::label('name', 'Name:') !!}
     <p>{{ $user->name }}</p>
@@ -31,9 +25,9 @@
             <tr>
                 <th scope="col">Transactions Id</th>
                 <th scope="col">Producto</th>
-                <th scope="col">Amount</th>
-                <th scope="col">payment_method</th>
-                <th scope="col">status</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Metodo de pago</th>
+                <th scope="col">Estado</th>
             </tr>
         </thead>
         <tbody>
@@ -43,9 +37,9 @@
             @foreach ($user->transactions as $transaction)
                 <tr>
                     <td>{{ $transaction->id }}</td>
-                    <td><a href="/qrcodes/{{$transaction->qrcode_id}}">{{ $transaction->qrcode ? $transaction->qrcode->product_name : 'N/A' }}</a>
-                 
-                    <img src="../{{ $transaction->qrcode ? $transaction->qrcode->product_url_image_path : 'N/A' }}" width="100px" />
+                    <td><a href="/qrcodes/{{$transaction->qrcode_id}}">{{ $transaction->product['product_name']}}</a>
+
+                        <img src="../{{ $transaction->product['product_url_image_path']}}" width="100px" />
                 </td>
                     <td>{{ $transaction->amount }}</td>
                     <td>{{ $transaction->payment_method }}</td>
@@ -76,7 +70,7 @@
             <tr>
                 <th scope="col ">Producto Id</th>
                 <th scope="col">Producto</th>
-                <th scope="col">amout</th>
+                <th scope="col">Precio</th>
             </tr>
         </thead>
         <tbody>
