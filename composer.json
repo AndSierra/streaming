@@ -14,7 +14,7 @@
         "infyomlabs/laravel-ui-adminlte": "^5.2",
         "infyomlabs/swagger-generator": "^3.0",
         "laravel/framework": "^10.10",
-        "laravel/sanctum": "^3.2",
+        "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "laravel/ui": "^4.2",
         "league/omnipay": "^3.2",
