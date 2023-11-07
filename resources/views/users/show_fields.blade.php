@@ -19,12 +19,12 @@
 <!-- Token Actual-->
 <div class="col-sm-12">
     {!! Form::label('Token', 'Token:') !!}
-    <p>{{ $user->remenber_token }}</p>
+    <p>{{ $user->remember_token }}</p>
 </div>
 
 <!-- Solicitar token -->
 <div class="col-sm-12">
-    <form method="POST" action="{{ route{'generate-token',$user} }}">
+    <form method="POST" action="{{ route('generate-token', $user) }}">
         @csrf
         @method('POST')
         <button type='submit' class="btn btn-primary">Generar Token</button>

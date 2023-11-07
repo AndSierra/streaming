@@ -8,7 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-use Laravel\Sanctum\HasApiTokens
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @OA\Schema(
