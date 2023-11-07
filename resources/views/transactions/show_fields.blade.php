@@ -1,8 +1,7 @@
 <!-- User Id Field -->
 <div class="col-sm-12">
     {!! Form::label('user_id', 'User Id:') !!}
-
-    <p>{{ $transaction->user['name'] }} || {{$transaction->user['email']}}</p>
+    <p>{{ $transaction->user_id }}</p>
 </div>
 
 <!-- Qrcode Owner Id Field -->
@@ -23,6 +22,12 @@
     <p>{{ $transaction->payment_method }}</p>
 </div>
 
+<!-- Paypal Payment Id Field -->
+<div class="col-sm-12">
+    {!! Form::label('paypal_payment_id', 'Paypal Payment Id:') !!}
+    <p>{{ $transaction->paypal_payment_id }}</p>
+</div>
+
 <!-- Message Field -->
 <div class="col-sm-12">
     {!! Form::label('message', 'Message:') !!}
@@ -40,5 +45,4 @@
     {!! Form::label('status', 'Status:') !!}
     <p>{{ $transaction->status }}</p>
 </div>
-
 

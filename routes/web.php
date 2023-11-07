@@ -33,7 +33,6 @@ Route::post('pay', [App\Http\Controllers\PaymentController::class, 'pay'])->name
 Route::get('success', [App\Http\Controllers\PaymentController::class, 'success']); 
 Route::get('error', [App\Http\Controllers\PaymentController::class, 'error']);
 
-// Route::post('/generate-token/{user}', 'TokenController@generateToken')->name('generate-token');
 
 Route::post('generateToken/{user}', [App\Http\Controllers\TokenController::class, 'generateToken'])->name('generate-token');
 

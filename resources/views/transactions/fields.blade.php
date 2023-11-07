@@ -1,5 +1,8 @@
 <!-- User Id Field -->
-{!! Form::hidden('user_id', Auth::user()->id, ['class' => 'form-control', 'required']) !!}
+<div class="form-group col-sm-6">
+    {!! Form::label('user_id', 'User Id:') !!}
+    {!! Form::number('user_id', null, ['class' => 'form-control', 'required']) !!}
+</div>
 
 <!-- Qrcode Owner Id Field -->
 <div class="form-group col-sm-6">
@@ -17,6 +20,12 @@
 <div class="form-group col-sm-6">
     {!! Form::label('payment_method', 'Payment Method:') !!}
     {!! Form::text('payment_method', null, ['class' => 'form-control', 'maxlength' => 255, 'maxlength' => 255]) !!}
+</div>
+
+<!-- Paypal Payment Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('paypal_payment_id', 'Paypal Payment Id:') !!}
+    {!! Form::number('paypal_payment_id', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Message Field -->

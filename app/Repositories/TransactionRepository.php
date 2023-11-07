@@ -12,6 +12,7 @@ class TransactionRepository extends BaseRepository
         'qrcode_owner_id',
         'qrcode_id',
         'payment_method',
+        'paypal_payment_id',
         'message',
         'amount',
         'status'

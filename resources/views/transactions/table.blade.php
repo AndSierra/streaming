@@ -7,6 +7,7 @@
                 <th>Qrcode Owner Id</th>
                 <th>Qrcode Id</th>
                 <th>Payment Method</th>
+                <th>Paypal Payment Id</th>
                 <th>Message</th>
                 <th>Amount</th>
                 <th>Status</th>
@@ -16,12 +17,11 @@
             <tbody>
             @foreach($transactions as $transaction)
                 <tr>
-                    <td>
-                        <a href="/users/{{$transaction->user['id']}}" > {{ $transaction->user['name'] }} || {{ $transaction->user['email'] }}</a>
-                    </td>                  
+                    <td>{{ $transaction->user_id }}</td>
                     <td>{{ $transaction->qrcode_owner_id }}</td>
                     <td>{{ $transaction->qrcode_id }}</td>
                     <td>{{ $transaction->payment_method }}</td>
+                    <td>{{ $transaction->paypal_payment_id }}</td>
                     <td>{{ $transaction->message }}</td>
                     <td>{{ $transaction->amount }}</td>
                     <td>{{ $transaction->status }}</td>

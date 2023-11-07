@@ -50,12 +50,14 @@
     {!! Form::label('amount', 'Amount:') !!}
     <p>{{ $qrcode->amount }}</p>
 </div>
-
+<!--  Formulario de pago PAYPAL -->
 <div class="col-sm-12">
-    <form action="{{ route('payment') }}" method="post"> @csrf
-        <!-- protección contra ataques de falsificación de solicitudes entre sitios (CSRF).--> <input type="hidden"
-            value="{{ $qrcode->id }}"> <button type="submit">Paypal</button> </form>
+    <form action="{{ route('payment') }}" method="post">
+        @csrf <!-- Protección contra ataques de falsificación de solicitudes entre sitios (CSRF) -->
+        <button type="submit">Paypal</button>
+    </form>
 </div>
+
 
 <h1>TRANSACCIONES DE ESTE PRODUCTO</h1>
 

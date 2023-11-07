@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('qrcode_owner_id')->nullable();
             $table->integer('qrcode_id');
             $table->string('payment_method')->nullable();
+            $table->integer('paypal_payment_id')->nullable();
             $table->longText('message')->nullable();
             $table->float('amount', 10, 4);
             $table->string('status')->default('initiated');
